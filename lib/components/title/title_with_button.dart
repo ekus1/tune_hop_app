@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:tune_hop_app/components/button/more_button.dart';
 
-Container titleWithButton({required String title, required String buttonText}) {
+Container titleWithButton(context, {required String title, required String buttonText, required String route}) {
   return Container(
     margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
     child: Row(
@@ -15,7 +15,7 @@ Container titleWithButton({required String title, required String buttonText}) {
               fontWeight: FontWeight.bold,
             ),
           ),
-          moreButton(text: buttonText)
+          moreButton(context, text: buttonText, route: route)
         ]
     )
   );

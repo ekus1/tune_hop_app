@@ -19,7 +19,7 @@ class InstrumentsPage extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox (
-              height: double.infinity,
+              height: double.maxFinite,
               child: ListView(
                 scrollDirection: Axis.vertical,
                 children: [

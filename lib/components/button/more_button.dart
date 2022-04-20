@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-TextButton moreButton({required String text}) {
+TextButton moreButton(context, {required String text, required String route}) {
   return TextButton(
     child: Text(text),
     style: TextButton.styleFrom(
@@ -11,6 +11,6 @@ TextButton moreButton({required String text}) {
       ),
       padding: const EdgeInsets.only(left: 20.0, right: 20.0)
     ),
-    onPressed: () { },
+    onPressed: () { Navigator.pushNamed(context, route); },
   );
 }

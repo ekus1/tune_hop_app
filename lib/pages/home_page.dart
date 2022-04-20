@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget{
       body: SingleChildScrollView(
         child: Column(
           children: [
-            titleWithButton(title: 'Instrumenti', buttonText: 'Vidi više'),
+            titleWithButton(context, title: 'Instrumenti', buttonText: 'Vidi više', route: '/instruments'),
             SizedBox (
               height: 250.0,
               child: ListView(
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget{
                 ],
               ),
             ),
-            titleWithButton(title: 'Igrice', buttonText: 'Vidi više'),
+            titleWithButton(context, title: 'Igrice', buttonText: 'Vidi više', route: '/games'),
             SizedBox (
               height: 250.0,
               child: ListView(
