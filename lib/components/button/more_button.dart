@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-TextButton moreButton(context, {required String text, required String route}) {
+TextButton moreButton(context, {String text = 'Vidi više', required String route}) {
   return TextButton(
     child: Text(text),
     style: TextButton.styleFrom(

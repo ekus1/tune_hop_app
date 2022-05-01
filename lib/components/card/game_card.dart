@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-SizedBox instrumentCard(BuildContext context, {required String title, required String description}) {
+SizedBox gameCard(BuildContext context, {required String title, required String score}) {
   return SizedBox(
     height: 250,
     width: MediaQuery.of(context).size.width / 2,
@@ -29,13 +29,21 @@ SizedBox instrumentCard(BuildContext context, {required String title, required S
                   fontWeight: FontWeight.bold,
                 )
             ),
-            subtitle: Text(
-                description,
-                style: const TextStyle(
-                  fontFamily: "Open Sans",
-                  fontSize: 16.0,
-                )
-            ),
+            subtitle: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.abc_rounded,
+                  size: 16.0,
+                ),
+                Text(
+                    score,
+                    style: const TextStyle(
+                      fontFamily: "Open Sans",
+                      fontSize: 16.0,
+                    )
+                ),
+              ])
           )],
       ),
       shape: RoundedRectangleBorder(

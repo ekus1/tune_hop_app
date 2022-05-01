@@ -7,6 +7,7 @@ AppBar header(context, {bool isHomePage = false, required String title, required
     title: isHomePage ? homePageHeader(title: title, subtitle: subtitle)
         : defaultPageHeader(context, title: title),
     centerTitle: false,
+    toolbarHeight: 80.0,
     backgroundColor: const Color(0xFF8ab23b),
     shape: const ContinuousRectangleBorder(
       borderRadius: BorderRadius.only(

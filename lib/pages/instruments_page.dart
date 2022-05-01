@@ -8,30 +8,34 @@ class InstrumentsPage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    final List<SizedBox> items = [
+      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
+      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
+      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
+      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
+      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
+      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
+      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
+    ];
+
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(80.0),
           child: header(context, isHomePage: false, title: 'Instrumenti', subtitle: '')
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox (
-              height: double.maxFinite,
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
-                  instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
-                  instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
-                ],
-              ),
-            ),
-          ],
+      body: Container(
+        margin: const EdgeInsets.all(20.0),
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 20,
+            childAspectRatio: 0.75,
+          ),
+          // return a custom ItemCard
+          itemBuilder: (context, i) => items[i],
+          itemCount: items.length,
         ),
-      ),
+      )
     );
   }
 }
