@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tune_hop_app/components/card/instrument_card.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../components/header/header.dart';
 
@@ -8,15 +9,7 @@ class InstrumentsPage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    final List<SizedBox> items = [
-      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
-      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
-      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
-      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
-      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
-      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
-      instrumentCard(context, title: 'Klavir', description: 'Klavijature'),
-    ];
+    var data = Get.arguments;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -32,8 +25,8 @@ class InstrumentsPage extends StatelessWidget{
             childAspectRatio: 0.75,
           ),
           // return a custom ItemCard
-          itemBuilder: (context, i) => items[i],
-          itemCount: items.length,
+          itemBuilder: (context, i) => data[i],
+          itemCount: data.length,
         ),
       )
     );

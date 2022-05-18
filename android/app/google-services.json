@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "646008175948",
+    "project_id": "tunehop-b74c9",
+    "storage_bucket": "tunehop-b74c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646008175948:android:89fda26ee9714de20f23e9",
+        "android_client_info": {
+          "package_name": "com.ekus.tune_hop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646008175948-c4q05bhalfrncuk3k594ejgo10tqm9bu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc90Nta3OwZMgoBlBkVSUlAuGM49PNJyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646008175948-c4q05bhalfrncuk3k594ejgo10tqm9bu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,7 +4,7 @@ import 'package:tune_hop_app/components/header/header_home_page.dart';
 
 AppBar header(context, {bool isHomePage = false, required String title, required String subtitle}) {
   return AppBar(
-    title: isHomePage ? homePageHeader(title: title, subtitle: subtitle)
+    title: isHomePage ? HomePageHeader(title: title, key: const Key('title'))
         : defaultPageHeader(context, title: title),
     centerTitle: false,
     toolbarHeight: 80.0,

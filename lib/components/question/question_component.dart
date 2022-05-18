@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tune_hop_app/models/game_type.dart';
 import '../../models/question.dart';
 import '../card/question_card.dart';
 import '../field/answers_filed.dart';
@@ -28,7 +29,7 @@ class QuestionComponent extends StatelessWidget {
         children: [
           progressIndicator(context, progress: (index+1)/listLength),
           questionCard(context, question: question.question),
-          AnswersField(answers: question.options, question: question, key: const Key('answers')),
+          AnswersField(answers: question.options, question: question, key: const Key('answers'), gameType: GameType.quiz),
         ],
       ),
     );

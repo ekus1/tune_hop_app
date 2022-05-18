@@ -9,7 +9,7 @@ class AnswerButton extends StatelessWidget {
     required Key key,
     required this.text,
     required this.index,
-    required this.press
+    required this.press,
   }) : super(key: key);
 
   final String text;
@@ -37,7 +37,7 @@ class AnswerButton extends StatelessWidget {
             onTap: press,
             borderRadius: BorderRadius.circular(25.0),
             child: Container(
-              height: 80,
+              height: 100,
               width: MediaQuery.of(context).size.width / 2 - 50,
               margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
               decoration: BoxDecoration(
@@ -45,8 +45,12 @@ class AnswerButton extends StatelessWidget {
                 color: getTheRightColor(),
               ),
               child: Container(
+                padding: EdgeInsets.all(10.0),
                 child: Center(
-                  child: Text(text),
+                  child: Text(text,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  textAlign: TextAlign.center),
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),

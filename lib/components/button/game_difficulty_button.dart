@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:tune_hop_app/models/game_route_arguments.dart';
+import 'package:tune_hop_app/models/game_type.dart';
+import 'package:tune_hop_app/models/question_difficulty.dart';
+import 'package:tune_hop_app/models/question_type.dart';
 
-Container gameDifficultyButton(context, {String text = 'Vidi više', required String route, required String difficulty}) {
+Container gameDifficultyButton(context, {String text = 'Vidi više', required String route, required QuestionDifficulty difficulty, required QuestionType questionType}) {
+  int difficultyColor = 0xFF8ab23b;
+  difficulty == QuestionDifficulty.easy ? difficultyColor = 0xFF8ab23b : difficulty == QuestionDifficulty.medium ? difficultyColor = 0xFFd76b28 : difficultyColor = 0xFFb23b4e;
+  GameType gameType = questionType == QuestionType.sound ? GameType.guessTheSound : GameType.quiz;
+
   return Container(
     alignment: Alignment.center,
     margin: const EdgeInsets.all(10.0),
@@ -10,8 +20,8 @@ Container gameDifficultyButton(context, {String text = 'Vidi više', required St
       child: TextButton(
         child: Text(text),
         style: TextButton.styleFrom(
-          primary: const Color(0xFF548000),
-          backgroundColor: const Color(0xFFB8DE6F),
+          primary: Colors.white,
+          backgroundColor: Color(difficultyColor),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
@@ -22,7 +32,7 @@ Container gameDifficultyButton(context, {String text = 'Vidi više', required St
             fontWeight: FontWeight.bold,
           ),
         ),
-        onPressed: () { Navigator.pushReplacementNamed(context, route, arguments: difficulty); },
+        onPressed: () { Get.offAndToNamed(route, arguments: GameRouteArguments(difficulty, questionType, gameType)); },
       ),
     ),
   );

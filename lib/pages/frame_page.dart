@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tune_hop_app/components/navigation/bottom_navigation.dart';
-import 'package:tune_hop_app/pages/game_difficulty_page.dart';
-import 'package:tune_hop_app/pages/games_page.dart';
+import 'package:tune_hop_app/models/user.dart';
+import 'package:tune_hop_app/pages/store_page.dart';
+import 'package:tune_hop_app/services/auth.dart';
+import 'package:tune_hop_app/services/database.dart';
 
 import '../components/header/header.dart';
 import 'home_page.dart';
@@ -19,8 +22,8 @@ class FramePage extends StatefulWidget {
 class _FramePageState extends State<FramePage> {
   static const List<Widget> _pages = <Widget>[
     HomePage(),
-    GamesDifficultyPage(),
-    GamesPage()
+    StorePage(),
+    StorePage()
   ];
 
   int _selectedIndex = 0;
@@ -50,24 +53,35 @@ class _FramePageState extends State<FramePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80.0),
-        child: header(context,
-            isHomePage: _isHomePage,
-            title: _headerTitle,
-            subtitle: _headerSubtitle)
-      ),
-      body: Center(
-        child: IndexedStack(
-          index: _selectedIndex,
-          children: _pages
+    final AuthService _authService = AuthService();
+    final DatabaseService _databaseService = DatabaseService(_authService.getCurrentUserUid());
+
+    return MultiProvider(
+      providers: [
+        StreamProvider<TuneHopUser?>.value(value: _databaseService.userData, initialData: TuneHopUser('', 0, 0, 0, 0, 0, 0)),
+      ],
+      child: Scaffold(
+        appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(80.0),
+            child: header(context,
+                isHomePage: _isHomePage,
+                title: _headerTitle,
+                subtitle: _headerSubtitle)
         ),
-      ),
-      bottomNavigationBar: bottomNavigation(
-          context,
-          selectedIndex: _selectedIndex,
-          onTap: _onTap),
+        body: Container(
+          color: const Color(0xFFF6F3EE),
+          child: Center(
+            child: IndexedStack(
+                index: _selectedIndex,
+                children: _pages
+            ),
+          ),
+        ),
+        bottomNavigationBar: bottomNavigation(
+            context,
+            selectedIndex: _selectedIndex,
+            onTap: _onTap),
+      )
     );
   }
 }

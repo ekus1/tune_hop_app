@@ -1,21 +1,23 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-
-import '../data/question_data.dart';
+import 'package:tune_hop_app/models/game_route_arguments.dart';
+import 'package:tune_hop_app/models/game_type.dart';
 import '../models/question.dart';
 
 class QuestionController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation _animation;
 
+  late AnimationController _animationController;
+  AnimationController get animationController => this._animationController;
+
+  late Animation _animation;
   Animation get animation => this._animation;
 
   late PageController _pageController;
   PageController get pageController => this._pageController;
 
-  late List<Question> _questions = easyQuestions;
-
+  late List<Question> _questions;
   List<Question> get questions => _questions;
 
   bool _isAnswered = false;
@@ -39,6 +41,9 @@ class QuestionController extends GetxController
   late int _score = 0;
   int get score => this._score;
 
+  late int _spareSeconds = 0;
+  int get spareSeconds => this._spareSeconds;
+
   @override
   void onInit() {
     _animationController = AnimationController(duration: const Duration(seconds: 60), vsync: this);
@@ -50,8 +55,8 @@ class QuestionController extends GetxController
         update();
       });
 
-    _animationController.forward().whenComplete(nextQuestion);
-    _pageController = new PageController();
+    _animationController.forward().whenComplete(() => nextQuestion);
+    _pageController = PageController();
 
     super.onInit();
   }
@@ -63,18 +68,21 @@ class QuestionController extends GetxController
     _pageController.dispose();
   }
 
-  updateQuestions(String difficulty) {
-    if (difficulty == 'easy') {
-      _questions = easyQuestions;
-    } else if (difficulty == 'medium') {
-      _questions = mediumQuestions;
-    } else {
-      _questions = hardQuestions;
-    }
+  updateQuestions(List<Question> questionList, GameRouteArguments gameRouteArguments) {
+    _animationController.reset();
+    _animationController.forward().whenComplete(() => nextQuestion);
+    _questions = questionList
+        .where((element) {
+            return element.questionDifficulty.name == gameRouteArguments.questionDifficulty.name;
+          })
+        .where((element) {
+          return element.questionType == gameRouteArguments.questionType;
+        })
+        .toList();
     update();
   }
 
-  void checkAns(Question question, int selectedIndex) {
+  void checkAns(Question question, int selectedIndex, GameType gameType) {
     _isAnswered = true;
     _correctAns = question.answer;
     _selectedAns = selectedIndex;
@@ -82,6 +90,7 @@ class QuestionController extends GetxController
     if (_correctAns == _selectedAns) {
       _numOfCorrectAns++;
       _score+=10;
+      _spareSeconds+=_timerSeconds;
     }
 
     _animationController.stop();
@@ -95,6 +104,7 @@ class QuestionController extends GetxController
   void nextQuestion() {
     var value = _questionNumber.value;
     var length = _questions.length;
+
     if (value != length - 1) {
       _isAnswered = false;
       _pageController.nextPage(
@@ -102,14 +112,18 @@ class QuestionController extends GetxController
 
       _animationController.reset();
 
-      _animationController.forward().whenComplete(nextQuestion);
+      _animationController.forward().whenComplete(() => nextQuestion);
     } else {
-      var scoreValue = _score;
+      var scoreValue = _score + _spareSeconds;
       _isAnswered = false;
       _questionNumber = 0.obs;
       _numOfCorrectAns = 0;
       _score = 0;
-      Get.offAndToNamed('/score', arguments: [scoreValue]);
+      _spareSeconds = 0;
+
+      var data = Get.arguments;
+
+      Get.offAllNamed('/score', arguments: [scoreValue, data.gameType]);
     }
   }
 
