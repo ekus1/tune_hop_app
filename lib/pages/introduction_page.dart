@@ -14,12 +14,11 @@ class IntroductionPage extends StatefulWidget {
 }
 
 class _IntroductionPageState extends State<IntroductionPage> {
-
   List<InstructionPageModel> instructions = <InstructionPageModel>[];
   int slideIndex = 0;
   late PageController controller;
 
-  Widget _buildPageIndicator(bool isCurrentPage){
+  Widget _buildPageIndicator(bool isCurrentPage) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 2.0),
       height: isCurrentPage ? 10.0 : 6.0,
@@ -42,57 +41,68 @@ class _IntroductionPageState extends State<IntroductionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.only(bottom: 80),
-        child: PageView(
-          controller: controller,
-          onPageChanged: (val) {
-            setState(() {
-              slideIndex = val;
-            });
-          },
-          children: [
-            introductionCard(context, instructions[0]),
-            introductionCard(context, instructions[1]),
-            introductionCard(context, instructions[2]),
-            const UserOnboardingPage(),
-          ],
+        body: Container(
+          padding: slideIndex != 3
+              ? const EdgeInsets.only(bottom: 80.0)
+              : const EdgeInsets.only(bottom: 0.0),
+          child: PageView(
+            controller: controller,
+            onPageChanged: (val) {
+              setState(() {
+                slideIndex = val;
+              });
+            },
+            children: [
+              introductionCard(context, instructions[0]),
+              introductionCard(context, instructions[1]),
+              introductionCard(context, instructions[2]),
+              const UserOnboardingPage(),
+            ],
+          ),
         ),
-      ),
-      bottomSheet: Container(
-        height: 80,
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        color: const Color(0xFF8ab23b),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            TextButton(
-              onPressed: (){
-                controller.animateToPage(3, duration: Duration(milliseconds: 400), curve: Curves.linear);
-              },
-              child: Text(
-                slideIndex != 3 ? 'Preskoči' : '',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+        bottomSheet: Container(
+          height: slideIndex != 3 ? 80 : 0,
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          color: const Color(0xFF8ab23b),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              TextButton(
+                onPressed: () {
+                  controller.animateToPage(3,
+                      duration: Duration(milliseconds: 400),
+                      curve: Curves.linear);
+                },
+                child: Text(
+                  slideIndex != 3 ? 'Preskoči' : '',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w600),
+                ),
               ),
-            ),
-            Container(
-              child: Row(
-                children: [
-                  for (int i = 0; i < 4 ; i++) i == slideIndex ? _buildPageIndicator(true): _buildPageIndicator(false),
-                ],),
-            ),
-            TextButton(
-              onPressed: (){
-                controller.animateToPage(slideIndex + 1, duration: Duration(milliseconds: 500), curve: Curves.linear);
-              },
-              child: Text(
-                slideIndex != 3 ? 'Dalje' : '',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              Container(
+                child: Row(
+                  children: [
+                    for (int i = 0; i < 4; i++)
+                      i == slideIndex
+                          ? _buildPageIndicator(true)
+                          : _buildPageIndicator(false),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      )
-    );
+              TextButton(
+                onPressed: () {
+                  controller.animateToPage(slideIndex + 1,
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.linear);
+                },
+                child: Text(
+                  slideIndex != 3 ? 'Dalje' : '',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w600),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

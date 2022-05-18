@@ -39,15 +39,6 @@ class HomePageHeader extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           )),
-      IconButton(
-          onPressed: () async {
-            await _authService.signOut();
-          },
-          icon: const Icon(
-            Icons.person,
-            size: 22.0,
-            color: Colors.white,
-          )),
     ]);
   }
 }

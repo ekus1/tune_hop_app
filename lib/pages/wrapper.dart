@@ -11,7 +11,6 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<TuneHopUser?>(context);
-    print(user);
     if (user == null) {
       return const IntroductionPage();
     } else {
