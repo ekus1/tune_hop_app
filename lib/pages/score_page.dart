@@ -29,8 +29,9 @@ class ScorePage extends StatelessWidget {
               child: scoreHeader(context),
           ),
           body: Container(
+            height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
             decoration: BoxDecoration(
                 image: DecorationImage(
                     colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
@@ -39,19 +40,22 @@ class ScorePage extends StatelessWidget {
                 )
             ),
             child: Container(
-              width: MediaQuery.of(context).size.width,
-              margin: const EdgeInsets.only(top: 30.0, right: 20.0, left: 20.0, bottom: 140.0),
+              height: double.infinity,
+              width: double.infinity,
+              margin: const EdgeInsets.only(top: 40.0, right: 20.0, left: 20.0, bottom: 40.0),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20.0)
               ),
               child: Column(
                 children: [
-                  const CongratulationsTitle(),
-                  Expanded(child: Center(
+                  const Expanded(flex: 1, child: CongratulationsTitle()),
+                  Expanded(
+                    flex: 1,
+                    child: Center(
                       child: Row(mainAxisSize: MainAxisSize.min, children: [
                         const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
                           child: Icon(Icons.diamond_outlined,
                               size: 32.0, color: Colors.black),
                         ),
@@ -64,56 +68,57 @@ class ScorePage extends StatelessWidget {
                         ),
                       ])),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 50.0),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          height: 80,
-                          padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 5.0),
-                          child: TextButton(
-                            child: Text('+ 20 sec.', style: TextStyle(
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 5.0),
+                            child: TextButton(
+                              child: Text('+ 20 sec.', style: TextStyle(
+                                  fontSize: 18.0
+                              )),
+                              style: TextButton.styleFrom(
+                                  primary: Colors.white,
+                                  backgroundColor: const Color(0xFF8ab23b),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  padding: const EdgeInsets.only(left: 20.0, right: 20.0)
+                              ),
+                              onPressed: () async {
+                                await DatabaseService(user?.uid).updateScores(user!, data[1], data[0]);
+                                Navigator.pushNamedAndRemoveUntil(context, '/', (Route<dynamic> route) => false);
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 5.0),
+                            child: TextButton(
+                              child: Text('Nastavi', style: TextStyle(
                                 fontSize: 18.0
-                            )),
-                            style: TextButton.styleFrom(
-                                primary: Colors.white,
-                                backgroundColor: const Color(0xFF8ab23b),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                padding: const EdgeInsets.only(left: 20.0, right: 20.0)
+                              )),
+                              style: TextButton.styleFrom(
+                                  primary: Colors.white,
+                                  backgroundColor: const Color(0xFF8ab23b),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  padding: const EdgeInsets.only(left: 20.0, right: 20.0)
+                              ),
+                              onPressed: () async {
+                                await DatabaseService(user?.uid).updateScores(user!, data[1], data[0]);
+                                Navigator.pushNamedAndRemoveUntil(context, '/', (Route<dynamic> route) => false);
+                              },
                             ),
-                            onPressed: () async {
-                              await DatabaseService(user?.uid).updateScores(user!, data[1], data[0]);
-                              Navigator.pushNamedAndRemoveUntil(context, '/', (Route<dynamic> route) => false);
-                            },
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 80,
-                          padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 5.0),
-                          child: TextButton(
-                            child: Text('Nastavi', style: TextStyle(
-                              fontSize: 18.0
-                            )),
-                            style: TextButton.styleFrom(
-                                primary: Colors.white,
-                                backgroundColor: const Color(0xFF8ab23b),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                padding: const EdgeInsets.only(left: 20.0, right: 20.0)
-                            ),
-                            onPressed: () async {
-                              await DatabaseService(user?.uid).updateScores(user!, data[1], data[0]);
-                              Navigator.pushNamedAndRemoveUntil(context, '/', (Route<dynamic> route) => false);
-                            },
-                          ),
-                        )
-                      ],
-                    )
+                          )
+                        ],
+                      )
+                    ),
                   )
                 ],
               ),

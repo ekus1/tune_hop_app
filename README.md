@@ -9,7 +9,8 @@ For the purpose of demonstrating the solution in the application, there is a sig
 The application is designed on the principle of one mobile device one user.
 
 ## Local application launch:
-- The application can be launched as a mobile application and it is necessary to install an emulator eg Pixel 2 api 29 and press run
+- There will be possible updates needed, such as Dart SDK or Flutter versions (Dart SDK version is 2.17.0 and Flutter version is 3.0.0) and dependency updates with 'flutter pub upgrade'
+- The application can be launched as a mobile application and it is necessary to install an emulator eg. Pixel 2 api 29 and press run
 - For demonstration purposes, the solution can also be run as a web application by selecting Chrome (web) or Edge (web) as the device and pressing run.
 
 ## Hosting version:

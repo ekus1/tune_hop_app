@@ -52,11 +52,11 @@ Container instrumentCard(BuildContext context, {required InstrumentCard instrume
                             )),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 4.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 1.0),
                         child: Text(instrumentCard.instrumentCategory.nameDescription,
                             style: const TextStyle(
                               fontFamily: "Open Sans",
-                              fontSize: 16.0,
+                              fontSize: 14.0,
                             )),
                       ),
                     ]),

@@ -11,7 +11,7 @@ class CongratulationsTitle extends StatelessWidget {
     var user = Provider.of<TuneHopUser?>(context);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 50.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Center(
           child: Text('Bravo ' + (user?.username ?? '') + '!',
               overflow: TextOverflow.ellipsis,
