@@ -1,16 +1,20 @@
-# tune_hop_app
+# Tune Hop
 
-A new Flutter project.
+TuneHop is an application for children that facilitates learning about instruments.
 
-## Getting Started
+The application was created using Flutter and Firebase.
 
-This project is a starting point for a Flutter application.
+Important note:
+For the purpose of demonstrating the solution in the application, there is a sign out button so that the flow of the application can be tested.
+The application is designed on the principle of one mobile device one user.
 
-A few resources to get you started if this is your first Flutter project:
+## Local application launch:
+- The application can be launched as a mobile application and it is necessary to install an emulator eg Pixel 2 api 29 and press run
+- For demonstration purposes, the solution can also be run as a web application by selecting Chrome (web) or Edge (web) as the device and pressing run.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Hosting version:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Important note: For the purpose of demonstration, the web version is deployed, and when using it, it is necessary to reduce the size of the browser or open it on a mobile device.
+
+- [tunehop-b74c9.web.app] (https://tunehop-b74c9.web.app/#/)
+- [tunehop-b74c9.firebaseapp.com] (https://tunehop-b74c9.firebaseapp.com/#/)
