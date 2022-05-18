@@ -16,5 +16,5 @@ The application is designed on the principle of one mobile device one user.
 
 Important note: For the purpose of demonstration, the web version is deployed, and when using it, it is necessary to reduce the size of the browser or open it on a mobile device.
 
-- [tunehop-b74c9.web.app] (https://tunehop-b74c9.web.app/#/)
-- [tunehop-b74c9.firebaseapp.com] (https://tunehop-b74c9.firebaseapp.com/#/)
+- [tunehop-b74c9.web.app](https://tunehop-b74c9.web.app/#/)
+- [tunehop-b74c9.firebaseapp.com](https://tunehop-b74c9.firebaseapp.com/#/)
