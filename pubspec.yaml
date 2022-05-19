@@ -82,6 +82,20 @@ flutter:
     - assets/images/slide2.png
     - assets/images/slide3.png
     - assets/audio/piano.wav
+    - assets/audio/cymbal.wav
+    - assets/audio/drums.wav
+    - assets/audio/flute.wav
+    - assets/audio/guitar.wav
+    - assets/audio/harmonica.wav
+    - assets/audio/horn.wav
+    - assets/audio/marimba.wav
+    - assets/audio/oboe.wav
+    - assets/audio/saxophone.wav
+    - assets/audio/triangle.wav
+    - assets/audio/trombone.wav
+    - assets/audio/trumpet.wav
+    - assets/audio/ukulele.wav
+    - assets/audio/violin.wav
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

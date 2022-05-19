@@ -10,13 +10,16 @@ Expanded questionCard(BuildContext context, {required String question}) {
       ),
       width: MediaQuery.of(context).size.width - 40,
       child: Center(
-        child: Text(
-            question,
-            style: const TextStyle(
-              fontFamily: "Open Sans",
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
-            )
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Text(
+              question,
+              style: const TextStyle(
+                fontFamily: "Open Sans",
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              )
+          ),
         ),
       )
     ),
