@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
+import 'package:tune_hop_app/models/achievement_card.dart';
 import 'package:tune_hop_app/models/instrument_card.dart';
 import 'package:tune_hop_app/models/instrument_details.dart';
 import 'package:tune_hop_app/models/user.dart';
@@ -39,11 +40,12 @@ class StartApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        StreamProvider<TuneHopUser?>.value(value: _authService.user, initialData: TuneHopUser('', 0, 0, 0, 0, 0, 0)),
+        StreamProvider<TuneHopUser?>.value(value: _authService.user, initialData: TuneHopUser('', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)),
         StreamProvider<List<Question>>.value(value: _databaseService.questions, initialData: []),
         StreamProvider<List<InstrumentCard>>.value(value: _databaseService.instrumentCards, initialData: []),
         StreamProvider<List<InstrumentDetails>>.value(value: _databaseService.instrumentDetails, initialData: []),
         StreamProvider<List<GameCard>>.value(value: _databaseService.gameCards, initialData: []),
+        StreamProvider<List<Achievement>>.value(value: _databaseService.achievementCards, initialData: []),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

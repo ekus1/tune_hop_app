@@ -23,7 +23,7 @@ Container gameDifficultyButton(context, {String text = 'Vidi više', required St
           primary: Colors.white,
           backgroundColor: Color(difficultyColor),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
           padding: const EdgeInsets.only(left: 20.0, right: 20.0),
           textStyle: const TextStyle(

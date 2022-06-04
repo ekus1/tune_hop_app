@@ -10,12 +10,12 @@ AppBar scoreHeader(context) {
           fontWeight: FontWeight.bold,
     )),
     centerTitle: false,
-    toolbarHeight: 80.0,
+    toolbarHeight: 60.0,
     backgroundColor: const Color(0xFF8ab23b),
     shape: const ContinuousRectangleBorder(
         borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(50.0),
-            bottomLeft: Radius.circular(50.0)
+            bottomRight: Radius.circular(10.0),
+            bottomLeft: Radius.circular(10.0)
         )
     ),
   );

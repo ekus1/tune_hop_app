@@ -7,6 +7,7 @@ import 'package:tune_hop_app/services/auth.dart';
 import 'package:tune_hop_app/services/database.dart';
 
 import '../components/header/header.dart';
+import 'achievements_page.dart';
 import 'home_page.dart';
 
 class FramePage extends StatefulWidget {
@@ -23,7 +24,7 @@ class _FramePageState extends State<FramePage> {
   static const List<Widget> _pages = <Widget>[
     HomePage(),
     StorePage(),
-    StorePage()
+    AchievementsPage()
   ];
 
   int _selectedIndex = 0;
@@ -58,11 +59,11 @@ class _FramePageState extends State<FramePage> {
 
     return MultiProvider(
       providers: [
-        StreamProvider<TuneHopUser?>.value(value: _databaseService.userData, initialData: TuneHopUser('', 0, 0, 0, 0, 0, 0)),
+        StreamProvider<TuneHopUser?>.value(value: _databaseService.userData, initialData: TuneHopUser('', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)),
       ],
       child: Scaffold(
         appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(80.0),
+            preferredSize: const Size.fromHeight(60.0),
             child: header(context,
                 isHomePage: _isHomePage,
                 title: _headerTitle,

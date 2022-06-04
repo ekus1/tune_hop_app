@@ -7,12 +7,12 @@ class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   TuneHopUser _mapUserFromUserCredentials(UserCredential userCredential) {
-    return TuneHopUser(userCredential.user!.uid, 0, 0, 0, 0, 0, 0, userCredential.additionalUserInfo?.username);
+    return TuneHopUser(userCredential.user!.uid, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, userCredential.additionalUserInfo?.username);
   }
 
   TuneHopUser? _mapUserFromUser(User? user) {
     if (user != null) {
-      return TuneHopUser(user.uid, 0, 0, 0, 0, 0, 0, user.displayName);
+      return TuneHopUser(user.uid, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, user.displayName);
     }
     return null;
   }

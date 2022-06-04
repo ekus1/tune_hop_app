@@ -23,7 +23,7 @@ class SoundQuestionComponent extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 10.0),
       padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(10.0),
       ),
       child: Column(
         children: [

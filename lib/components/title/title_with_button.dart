@@ -11,7 +11,7 @@ Container titleWithButton(context, {required String title, required String butto
             title,
             style: const TextStyle(
               fontFamily: "Open Sans",
-              fontSize: 20.0,
+              fontSize: 22.0,
               fontWeight: FontWeight.bold,
             ),
           ),

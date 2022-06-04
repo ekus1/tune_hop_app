@@ -25,7 +25,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
       width: isCurrentPage ? 10.0 : 6.0,
       decoration: BoxDecoration(
         color: isCurrentPage ? Colors.white : Colors.white30,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
@@ -43,7 +43,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
     return Scaffold(
         body: Container(
           padding: slideIndex != 3
-              ? const EdgeInsets.only(bottom: 80.0)
+              ? const EdgeInsets.only(bottom: 60.0)
               : const EdgeInsets.only(bottom: 0.0),
           child: PageView(
             controller: controller,

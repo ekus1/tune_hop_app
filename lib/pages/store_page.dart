@@ -15,7 +15,7 @@ class _StorePageState extends State<StorePage> {
   Widget build(BuildContext context) {
     final List<Widget> storeData = [];
     for (var element in storeCardData) {
-      storeData.add(storeCard(context, storeCard: element));
+      storeData.add(StoreCard(storeData: element));
     }
 
     return Container(

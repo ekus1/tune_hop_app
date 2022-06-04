@@ -24,7 +24,7 @@ class AnswersField extends StatelessWidget {
     QuestionController _questionController = Get.put(QuestionController());
     return Container(
       width: MediaQuery.of(context).size.width - 40,
-      margin: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+      margin: const EdgeInsets.only(bottom: 5.0, left: 5.0, right: 5.0, top: 10.0),
       child: Column(
         children: [
           Row(

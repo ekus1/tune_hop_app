@@ -42,14 +42,14 @@ class _UserOnboardingPageState extends State<UserOnboardingPage> {
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(20.0)),
+                          borderRadius: BorderRadius.circular(10.0)),
                       padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
                       child: Column(
                         children: [
                           Container(
                             padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(10.0),
                               child: Image.asset(
                                 'assets/images/logo.png',
                                 fit: BoxFit.cover,
@@ -92,7 +92,7 @@ class _UserOnboardingPageState extends State<UserOnboardingPage> {
                                       primary: Colors.white,
                                       backgroundColor: const Color(0xFF8ab23b),
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20.0),
+                                        borderRadius: BorderRadius.circular(10.0),
                                       ),
                                       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0)
                                     ))

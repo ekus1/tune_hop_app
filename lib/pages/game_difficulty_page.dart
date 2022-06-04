@@ -19,7 +19,7 @@ class GamesDifficultyPage extends StatelessWidget{
     }
     return Scaffold(
         appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(80.0),
+            preferredSize: const Size.fromHeight(60.0),
             child: header(context, isHomePage: false, title: 'Težina igrice', subtitle: '')
         ),
         body: Container(

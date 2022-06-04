@@ -30,8 +30,8 @@ class GameHeader extends StatelessWidget {
               decoration: const BoxDecoration(
                   color: Color(0xFF8ab23b),
                   borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(30.0),
-                      bottomLeft: Radius.circular(30.0))),
+                      bottomRight: Radius.circular(10.0),
+                      bottomLeft: Radius.circular(10.0))),
               width: MediaQuery.of(context).size.width,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -40,9 +40,9 @@ class GameHeader extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        height: 40.0,
+                        height: 60.0,
+                        padding: const EdgeInsets.only(left: 20.0),
                         width: MediaQuery.of(context).size.width / 3,
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: IconButton(
@@ -50,43 +50,17 @@ class GameHeader extends StatelessWidget {
                                 Navigator.pushNamedAndRemoveUntil(context, '/', (Route<dynamic> route) => false);
                               },
                               icon: const Icon(
-                                Icons.close,
+                                Icons.arrow_back,
                                 size: 22.0,
                                 color: Colors.white,
                               )),
                         ),
                       ),
                       SizedBox(
-                          height: 40.0,
+                          height: 60.0,
                           width: MediaQuery.of(context).size.width / 3,
-                          child: Center(
-                              child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.only(right: 5.0),
-                                      child: const Icon(
-                                        Icons.diamond_outlined,
-                                        size: 18.0,
-                                        color: Colors.white
-                                      ),
-                                    ),
-                                    Text(getScore(),
-                                        style: const TextStyle(
-                                            fontFamily: "Open Sans",
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white)),
-                                  ])))
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SizedBox(
-                          height: 40.0,
-                          width: MediaQuery.of(context).size.width / 3,
-                          child: Center(
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
                             child: Text(getTimer(),
                                 style: const TextStyle(
                                     fontFamily: "Open Sans",
@@ -95,58 +69,31 @@ class GameHeader extends StatelessWidget {
                                     color: Colors.white)),
                           )),
                       SizedBox(
-                        height: 40.0,
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: Center(
-                            child:
-                                Row(mainAxisSize: MainAxisSize.min, children: [
-                                  Container(
-                                    height: 32.0,
-                                    width: 32.0,
-                                    margin: const EdgeInsets.only(right: 5.0),
-                                    decoration: const BoxDecoration(
-                                      color: Colors.blue,
-                                      borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                                    ),
-                                    child: Center(
-                                      child: IconButton(
-                                          padding: EdgeInsets.zero,
-                                          onPressed: () {
-                                            Navigator.pushNamedAndRemoveUntil(context, '/', (Route<dynamic> route) => false);
-                                          },
-                                          icon: const Icon(
-                                            Icons.double_arrow,
-                                            size: 20.0,
-                                            color: Colors.white,
-                                          )),
-                                    )
-                                  ),
-                                  Container(
-                                      height: 32.0,
-                                      width: 32.0,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.blue,
-                                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                          height: 60.0,
+                          width: MediaQuery.of(context).size.width / 3,
+                          child: Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(right: 5.0),
+                                      child: const Icon(
+                                        Icons.diamond_outlined,
+                                        size: 22.0,
+                                        color: Colors.white
                                       ),
-                                      child: Center(
-                                        child: IconButton(
-                                            padding: EdgeInsets.zero,
-                                            onPressed: () {
-                                              Navigator.pushNamedAndRemoveUntil(context, '/', (Route<dynamic> route) => false);
-                                            },
-                                            icon: const Icon(
-                                              Icons.star_half,
-                                              size: 20.0,
-                                              color: Colors.white,
-                                            )),
-                                      )
-                                  ),
-                                ])),
-                      )
+                                    ),
+                                    Text(getScore(),
+                                        style: const TextStyle(
+                                            fontFamily: "Open Sans",
+                                            fontSize: 22.0,
+                                            fontWeight: FontWeight.normal,
+                                            color: Colors.white)),
+                                  ])))
                     ],
-                  )
-                ],
-              ));
+                  ),
+              ]));
         });
   }
 }

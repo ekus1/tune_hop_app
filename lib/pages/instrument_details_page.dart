@@ -22,7 +22,7 @@ class InstrumentDetailsPage extends StatelessWidget {
 
     return Scaffold(
         appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(80.0),
+            preferredSize: const Size.fromHeight(60.0),
             child: header(context,
                 isHomePage: false,
                 title: instrumentDetails.name,
@@ -35,7 +35,7 @@ class InstrumentDetailsPage extends StatelessWidget {
               padding: const EdgeInsets.only(top: 10.0, bottom: 20.0),
               decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -44,7 +44,7 @@ class InstrumentDetailsPage extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
                       padding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 30.0),
                       child: Stack(
@@ -53,7 +53,7 @@ class InstrumentDetailsPage extends StatelessWidget {
                             width: double.infinity,
                             child: FittedBox(
                               child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(10.0),
                                   child: Image.asset(instrumentDetails.picturePath)),
                               fit: BoxFit.fitWidth,
                             ),

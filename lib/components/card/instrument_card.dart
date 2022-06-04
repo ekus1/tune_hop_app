@@ -17,7 +17,7 @@ Container instrumentCard(BuildContext context, {required InstrumentCard instrume
           width: double.infinity,
           margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
+              color: Colors.white, borderRadius: BorderRadius.circular(10.0)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -27,10 +27,9 @@ Container instrumentCard(BuildContext context, {required InstrumentCard instrume
                   padding: const EdgeInsets.symmetric(
                       vertical: 10.0, horizontal: 10.0),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(10.0),
                     child: Image.asset(
                       instrumentCard.picturePath,
-                      height: 150,
                       fit: BoxFit.fill,
                     ),
                   ),

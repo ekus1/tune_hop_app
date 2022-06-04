@@ -1,6 +1,6 @@
-class StoreCard {
+class JokerDetails {
   final String name, description, iconName;
   final int price;
 
-  StoreCard(this.name, this. description, this.iconName, this.price);
+  JokerDetails(this.name, this. description, this.iconName, this.price);
 }

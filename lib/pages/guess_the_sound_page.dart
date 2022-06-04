@@ -23,7 +23,7 @@ class GuessTheSoundPage extends StatelessWidget {
 
     return Scaffold(
         appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(80.0),
+            preferredSize: Size.fromHeight(60.0),
             child: GameHeader()
         ),
         body: Container(

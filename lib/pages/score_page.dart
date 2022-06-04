@@ -21,11 +21,11 @@ class ScorePage extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        StreamProvider<TuneHopUser?>.value(value: _databaseService.userData, initialData: TuneHopUser('', 0, 0, 0, 0, 0, 0)),
+        StreamProvider<TuneHopUser?>.value(value: _databaseService.userData, initialData: TuneHopUser('', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)),
       ],
       child: Scaffold(
           appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(80.0),
+              preferredSize: const Size.fromHeight(60.0),
               child: scoreHeader(context),
           ),
           body: Container(
@@ -45,7 +45,7 @@ class ScorePage extends StatelessWidget {
               margin: const EdgeInsets.only(top: 40.0, right: 20.0, left: 20.0, bottom: 40.0),
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.0)
+                  borderRadius: BorderRadius.circular(10.0)
               ),
               child: Column(
                 children: [
@@ -112,6 +112,8 @@ class ScorePage extends StatelessWidget {
                               ),
                               onPressed: () async {
                                 await DatabaseService(user?.uid).updateScores(user!, data[1], data[0]);
+                                await DatabaseService(user.uid).updateGameStats(user, data[1], data[2]);
+                                await DatabaseService(user.uid).checkForAchievements(user);
                                 Navigator.pushNamedAndRemoveUntil(context, '/', (Route<dynamic> route) => false);
                               },
                             ),

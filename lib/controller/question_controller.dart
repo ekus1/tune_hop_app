@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -83,6 +85,7 @@ class QuestionController extends GetxController
   }
 
   void checkAns(Question question, int selectedIndex, GameType gameType) {
+    log('here');
     _isAnswered = true;
     _correctAns = question.answer;
     _selectedAns = selectedIndex;
@@ -115,6 +118,7 @@ class QuestionController extends GetxController
       _animationController.forward().whenComplete(() => nextQuestion);
     } else {
       var scoreValue = _score + _spareSeconds;
+      var correctAnswers = _numOfCorrectAns;
       _isAnswered = false;
       _questionNumber = 0.obs;
       _numOfCorrectAns = 0;
@@ -123,7 +127,7 @@ class QuestionController extends GetxController
 
       var data = Get.arguments;
 
-      Get.offAllNamed('/score', arguments: [scoreValue, data.gameType]);
+      Get.offAllNamed('/score', arguments: [scoreValue, data.gameType, correctAnswers]);
     }
   }
 
