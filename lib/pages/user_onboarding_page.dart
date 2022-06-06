@@ -74,28 +74,31 @@ class _UserOnboardingPageState extends State<UserOnboardingPage> {
                                   ),
                                 ),
                                 const SizedBox(height: 20.0),
-                                TextButton(
-                                    onPressed: () async {
-                                      if (_formKey.currentState!.validate()) {
-                                        setState(() => isLoading = true);
-                                        dynamic result = _authService.signInAnon(displayName);
-                                        if (result == null) {
-                                          setState(() { isLoading = false; });
+                                Container(
+                                  width: double.infinity,
+                                  child: TextButton(
+                                      onPressed: () async {
+                                        if (_formKey.currentState!.validate()) {
+                                          setState(() => isLoading = true);
+                                          dynamic result = _authService.signInAnon(displayName);
+                                          if (result == null) {
+                                            setState(() { isLoading = false; });
+                                          }
                                         }
-                                      }
-                                    },
-                                    child: const Text('Dalje',
-                                    style: TextStyle(
-                                      fontSize: 18.0
-                                    )),
-                                    style: TextButton.styleFrom(
-                                      primary: Colors.white,
-                                      backgroundColor: const Color(0xFF8ab23b),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0)
-                                    ))
+                                      },
+                                      child: const Text('Dalje',
+                                      style: TextStyle(
+                                        fontSize: 18.0
+                                      )),
+                                      style: TextButton.styleFrom(
+                                        primary: Colors.white,
+                                        backgroundColor: const Color(0xFF8ab23b),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10.0),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0)
+                                      )),
+                                )
                               ],
                             ),
                           ),

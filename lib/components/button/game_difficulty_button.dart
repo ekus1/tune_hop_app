@@ -57,24 +57,24 @@ showAlertDialog(BuildContext buildContext, String route,
   if (gameType == GameType.quiz) {
     if (difficulty == QuestionDifficulty.easy) {
       title = "Lagano";
-      content = "Kviz ima 10 pitanja. Za svako pitanje imaš 60 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+const 20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
+      content = "Kviz ima 10 pitanja. Za svako pitanje imaš 60 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
     } else if (difficulty == QuestionDifficulty.medium) {
       title = "Srednje";
-      content = "Kviz ima 15 pitanja. Za svako pitanje imaš 50 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+const 20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
+      content = "Kviz ima 15 pitanja. Za svako pitanje imaš 50 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
     } else {
       title = "Teško";
-      content = "Kviz ima 20 pitanja. Za svako pitanje imaš 40 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+const 20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
+      content = "Kviz ima 20 pitanja. Za svako pitanje imaš 40 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
     }
   } else {
     if (difficulty == QuestionDifficulty.easy) {
       title = "Lagano";
-      content = "Pogodi zvuk ima 10 pitanja. Za svako pitanje imaš 60 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+const 20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
+      content = "Pogodi zvuk ima 10 pitanja. Za svako pitanje imaš 60 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
     } else if (difficulty == QuestionDifficulty.medium) {
       title = "Srednje";
-      content = "Pogodi zvuk ima 15 pitanja. Za svako pitanje imaš 50 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+const 20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
+      content = "Pogodi zvuk ima 15 pitanja. Za svako pitanje imaš 50 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
     } else {
       title = "Teško";
-      content = "Pogodi zvuk ima 20 pitanja. Za svako pitanje imaš 40 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+const 20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
+      content = "Pogodi zvuk ima 20 pitanja. Za svako pitanje imaš 40 sekundi za odgovor.\n\nZa svako pitanje možeš iskoristiti jokere.\n\nx2 donosi duple bodove\n+20s dodaje 20 sekundi za odgovore\n1/2 prepolovi broj mogućih odgovora";
     }
   }
 

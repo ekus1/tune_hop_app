@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:tune_hop_app/models/game_type.dart';
-import 'package:tune_hop_app/models/question_difficulty.dart';
 
 import '../../controller/question_controller.dart';
 import '../../models/question.dart';
@@ -37,7 +36,9 @@ Container nextButton(context, {String text = 'Dalje', required Question question
           ),
           padding: const EdgeInsets.only(left: 5.0, right: 5.0)
       ),
-      onPressed: () { _questionController.nextQuestion(); },
+      onPressed: () {
+        _questionController.nextQuestion();
+        },
     ),
   );
 }

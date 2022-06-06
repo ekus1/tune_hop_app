@@ -5,6 +5,7 @@ import 'package:tune_hop_app/models/store_card.dart';
 import '../../models/user.dart';
 import '../../services/auth.dart';
 import '../../services/database.dart';
+import '../field/joker_icon_field.dart';
 
 class StoreCard extends StatelessWidget {
   const StoreCard({Key? key, required this.storeData}) : super(key: key);
@@ -36,13 +37,11 @@ class StoreCard extends StatelessWidget {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(
-                          left: 20.0, right: 10.0, top: 20.0, bottom: 10.0),
-                      child: const Icon(Icons.check_circle,
-                          size: 24.0, color: Color(0xFF548000)),
-                    ),
+                          left: 20.0, right: 10.0, top: 15.0, bottom: 10.0),
+                      child: jokerIconField(name: storeData.name)),
                     Container(
                       margin: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 20.0, bottom: 10.0),
+                          left: 10.0, right: 10.0, top: 15.0, bottom: 10.0),
                       child: Text(
                         storeData.name,
                         overflow: TextOverflow.ellipsis,
@@ -51,7 +50,7 @@ class StoreCard extends StatelessWidget {
                             fontFamily: "Open Sans",
                             fontSize: 20.0,
                             fontWeight: FontWeight.w600,
-                            color: Colors.black54),
+                            color: Colors.black87),
                       ),
                     ),
                   ],
@@ -73,7 +72,7 @@ class StoreCard extends StatelessWidget {
                               fontFamily: "Open Sans",
                               fontSize: 18.0,
                               fontWeight: FontWeight.w500,
-                              color: Colors.black54),
+                              color: Colors.black87),
                         ),
                       ),
                     ),

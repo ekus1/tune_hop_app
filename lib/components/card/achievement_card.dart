@@ -21,7 +21,7 @@ class AchievementCard extends StatelessWidget {
     var user = Provider.of<TuneHopUser?>(context);
 
     Color achievementColor = Colors.grey;
-    Color letterColor = Colors.black54;
+    Color letterColor = Colors.black87;
 
     if (achievement.isAchieved && achievement.isCollected) {
       achievementColor = Colors.white;
@@ -31,20 +31,23 @@ class AchievementCard extends StatelessWidget {
       letterColor = const Color(0xFF548000);
     } else {
       achievementColor = Colors.grey;
-      letterColor = Colors.black54;
+      letterColor = Colors.black87;
+    }
+
+    void collect() async {
+      await _databaseService.collectAchievement(user!.uid, achievement.id);
+      await _databaseService.collectReward(user!.uid, achievement.reward);
     }
 
     return Container(
       height: MediaQuery.of(context).size.height / 7,
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      margin: const EdgeInsets.symmetric(vertical: 5.0),
       child: InkWell(
         onTap: () async => {
-          if (achievement.isAchieved && !achievement.isCollected)
-            {
-              await _databaseService.collectAchievement(
-                  user!.uid, achievement.id)
-            }
+          if (achievement.isAchieved && !achievement.isCollected) {
+              collect()
+          }
         },
         child: Container(
           height: double.infinity,
@@ -77,7 +80,7 @@ class AchievementCard extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 30.0, vertical: 5.0),
                 child: achievement.isCollected
                     ? (const Icon(Icons.check_circle,
-                        size: 18.0, color: Color(0xFF548000)))
+                        size: 24.0, color: Color(0xFF548000)))
                     : (Text(
                         achievement.reward.toString(),
                         style: TextStyle(

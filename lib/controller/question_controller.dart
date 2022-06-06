@@ -149,7 +149,7 @@ class QuestionController extends GetxController
     if (value != length - 1) {
       _isAnswered = false;
       _pageController.nextPage(
-          duration: const Duration(milliseconds: 100), curve: Curves.ease);
+          duration: const Duration(milliseconds: 1000), curve: Curves.ease);
 
       _animationController.reset();
 

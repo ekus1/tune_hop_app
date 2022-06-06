@@ -380,6 +380,32 @@ class DatabaseService {
     });
   }
 
+  Future collectReward(String userUid, int reward) async {
+    await userCollection.doc(uid).get().then((value) {
+      Map<String, dynamic> data = value.data()! as Map<String, dynamic>;
+
+      return TuneHopUser(
+          data['uid'] ?? '',
+          data['guessTheSoundScore'],
+          data['quizScore'],
+          data['halfAndHalfJockerCount'],
+          data['doubleValueJockerCount'],
+          data['additionalTimeJockerCount'],
+          data['diamonds'],
+          data['correctAnswersGuessTheSound'],
+          data['correctAnswersQuiz'],
+          data['gamesPlayed'],
+          data['jokersBought'],
+          data['username'] ?? '');
+    }).then((value) {
+      int diamonds = value.diamonds + reward;
+
+      return userCollection.doc(uid).update({
+        'diamonds': diamonds,
+      });
+    });
+  }
+
   Future buyJoker(String name, int price) async {
     await userCollection.doc(uid).get().then((value) {
       Map<String, dynamic> data = value.data()! as Map<String, dynamic>;

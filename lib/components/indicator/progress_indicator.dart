@@ -25,7 +25,7 @@ Container progressIndicator(BuildContext context, {required double progress, req
             child: Text(
               questionNumber.toString() + "/" + listLength.toString(),
               style: TextStyle(
-                color: Colors.black54,
+                color: Colors.black87,
                 fontSize: 18.0,
                 fontWeight: FontWeight.w600
               ),
