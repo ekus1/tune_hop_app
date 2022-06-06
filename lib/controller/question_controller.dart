@@ -1,10 +1,12 @@
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tune_hop_app/models/game_route_arguments.dart';
 import 'package:tune_hop_app/models/game_type.dart';
+import 'package:tune_hop_app/models/question_difficulty.dart';
 import '../models/question.dart';
 
 class QuestionController extends GetxController
@@ -39,12 +41,21 @@ class QuestionController extends GetxController
 
   late int _timerSeconds = 60;
   int get timerSeconds => this._timerSeconds;
+  set setTimerSeconds(int additionalSeconds) {
+    this._timerSeconds = additionalSeconds;
+  }
 
   late int _score = 0;
   int get score => this._score;
 
   late int _spareSeconds = 0;
   int get spareSeconds => this._spareSeconds;
+
+  late bool _isDoubleValueUsed = false;
+  bool get isDoubleValueUsed => this._isDoubleValueUsed;
+  set isDoubleValueUser(bool value) {
+    this._isDoubleValueUsed = value;
+  }
 
   @override
   void onInit() {
@@ -72,6 +83,21 @@ class QuestionController extends GetxController
 
   updateQuestions(List<Question> questionList, GameRouteArguments gameRouteArguments) {
     _animationController.reset();
+    var value = 60;
+    if (gameRouteArguments.questionDifficulty == QuestionDifficulty.easy) {
+      value = 60;
+    } else if (gameRouteArguments.questionDifficulty == QuestionDifficulty.medium) {
+      value = 50;
+    } else {
+      value = 40;
+    }
+
+    _timerSeconds = value;
+    _animation = IntTween(begin: 0, end: value).animate(_animationController)
+      ..addListener(() {
+        _timerSeconds = int.parse(value.toString()) - int.parse(_animation.value.toString());
+        update();
+      });
     _animationController.forward().whenComplete(() => nextQuestion);
     _questions = questionList
         .where((element) {
@@ -92,21 +118,33 @@ class QuestionController extends GetxController
 
     if (_correctAns == _selectedAns) {
       _numOfCorrectAns++;
-      _score+=10;
+      if (_isDoubleValueUsed) {
+        _score+=20;
+      } else {
+        _score+=10;
+      }
       _spareSeconds+=_timerSeconds;
     }
+    _isDoubleValueUsed = false;
 
     _animationController.stop();
     update();
-
-    Future.delayed(const Duration(seconds: 1), () {
-      nextQuestion();
-    });
   }
 
   void nextQuestion() {
     var value = _questionNumber.value;
     var length = _questions.length;
+
+    var data = Get.arguments;
+
+    var animationValue = 60;
+    if (data.questionDifficulty == QuestionDifficulty.easy) {
+      animationValue = 60;
+    } else if (data.questionDifficulty == QuestionDifficulty.medium) {
+      animationValue = 50;
+    } else {
+      animationValue = 40;
+    }
 
     if (value != length - 1) {
       _isAnswered = false;
@@ -114,6 +152,12 @@ class QuestionController extends GetxController
           duration: const Duration(milliseconds: 100), curve: Curves.ease);
 
       _animationController.reset();
+
+      _animation = IntTween(begin: 0, end: animationValue).animate(_animationController)
+        ..addListener(() {
+          _timerSeconds = int.parse(animationValue.toString()) - int.parse(_animation.value.toString());
+          update();
+        });
 
       _animationController.forward().whenComplete(() => nextQuestion);
     } else {
@@ -125,13 +169,28 @@ class QuestionController extends GetxController
       _score = 0;
       _spareSeconds = 0;
 
-      var data = Get.arguments;
-
-      Get.offAllNamed('/score', arguments: [scoreValue, data.gameType, correctAnswers]);
+      Get.offAllNamed('/score', arguments: [scoreValue, data.gameType, correctAnswers, data.questionDifficulty]);
     }
   }
 
   void updateTheQnNum(int index) {
     _questionNumber.value = index;
   }
+
+  void setSeconds(int currentSeconds) {
+    _animationController.reset();
+    var endValue = currentSeconds + 20;
+    _animation = IntTween(begin: 0, end: endValue).animate(_animationController)
+      ..addListener(() {
+        _timerSeconds = int.parse(endValue.toString()) - int.parse(_animation.value.toString());
+        update();
+      });
+    _animationController.forward().whenComplete(() => nextQuestion);
+  }
+
+  void setIsDoubleValueUsed() {
+    _isDoubleValueUsed = true;
+    update();
+  }
+
 }

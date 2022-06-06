@@ -7,7 +7,7 @@ Expanded soundQuestionCard(BuildContext context, {required String sound}) {
 
   return Expanded(
     child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 60.0, horizontal: 40.0),
+        margin: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 40.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100.0)
         ),

@@ -13,11 +13,11 @@ extension InstrumentCategoryExtension on InstrumentCategory {
       case InstrumentCategory.brass:
         return 'Limeni puhački instrument';
       case InstrumentCategory.keyboards:
-        return 'Instrument s klavijaturama';
+        return 'Klavijature';
       case InstrumentCategory.orchestra:
         return 'Orkestarski instrument';
       case InstrumentCategory.percussion:
-        return 'Udaraljkaški instrument';
+        return 'Udaraljke';
       case InstrumentCategory.strings:
         return 'Žičani instrument';
       default:

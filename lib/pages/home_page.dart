@@ -46,14 +46,11 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: Column(
           children: [
+            titleWithButton(context,
+                title: 'Instrumenti',
+                buttonText: 'Vidi više',
+                route: '/instruments', widgets: instruments),
             Expanded(
-                flex: 1,
-                child: titleWithButton(context,
-                    title: 'Instrumenti',
-                    buttonText: 'Vidi više',
-                    route: '/instruments', widgets: instruments)),
-            Expanded(
-              flex: 4,
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: ListView(
@@ -62,12 +59,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+            titleWithButton(context,
+                title: 'Igrice', buttonText: 'Vidi više', route: '/games', widgets: games),
             Expanded(
-                flex: 1,
-                child: titleWithButton(context,
-                    title: 'Igrice', buttonText: 'Vidi više', route: '/games', widgets: games)),
-            Expanded(
-              flex: 4,
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: ListView(

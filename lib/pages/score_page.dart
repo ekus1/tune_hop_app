@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:tune_hop_app/components/title/congratulations_title.dart';
+import 'package:tune_hop_app/models/game_type.dart';
+import 'package:tune_hop_app/models/question_type.dart';
 
 import '../components/header/header_score.dart';
+import '../models/game_route_arguments.dart';
 import '../models/user.dart';
 import '../services/auth.dart';
 import '../services/database.dart';
@@ -75,10 +78,11 @@ class ScorePage extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
+                            height: 50.0,
                             width: double.infinity,
                             padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 5.0),
                             child: TextButton(
-                              child: Text('+ 20 sec.', style: TextStyle(
+                              child: Text('Ponovi', style: TextStyle(
                                   fontSize: 18.0
                               )),
                               style: TextButton.styleFrom(
@@ -91,11 +95,22 @@ class ScorePage extends StatelessWidget {
                               ),
                               onPressed: () async {
                                 await DatabaseService(user?.uid).updateScores(user!, data[1], data[0]);
-                                Navigator.pushNamedAndRemoveUntil(context, '/', (Route<dynamic> route) => false);
+                                await DatabaseService(user.uid).updateGameStats(user, data[1], data[2]);
+                                await DatabaseService(user.uid).checkForAchievements(user);
+                                if (data[1] == GameType.quiz) {
+                                  String url = "/difficulty/quiz";
+                                  Get.offAndToNamed(url,
+                                      arguments: GameRouteArguments(data[3], QuestionType.text, data[1]));
+                                } else {
+                                  String url = "/difficulty/guessTheSound";
+                                  Get.offAndToNamed(url,
+                                      arguments: GameRouteArguments(data[3], QuestionType.sound, data[1]));
+                                }
                               },
                             ),
                           ),
                           Container(
+                            height: 50.0,
                             width: double.infinity,
                             padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 5.0),
                             child: TextButton(

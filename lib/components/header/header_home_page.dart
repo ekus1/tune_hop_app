@@ -35,7 +35,7 @@ class HomePageHeader extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Image.asset(
-              'assets/images/header_tiger.png',
+              'assets/images/header_piggy.png',
               fit: BoxFit.contain,
             ),
           )),

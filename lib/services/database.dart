@@ -421,4 +421,57 @@ class DatabaseService {
       }
     });
   }
+
+  Future updateAdditionalTimeJoker() async {
+    await userCollection.doc(uid).get().then((value) {
+      Map<String, dynamic> data = value.data()! as Map<String, dynamic>;
+
+      return TuneHopUser(
+          data['uid'] ?? '',
+          data['guessTheSoundScore'],
+          data['quizScore'],
+          data['halfAndHalfJockerCount'],
+          data['doubleValueJockerCount'],
+          data['additionalTimeJockerCount'],
+          data['diamonds'],
+          data['correctAnswersGuessTheSound'],
+          data['correctAnswersQuiz'],
+          data['gamesPlayed'],
+          data['jokersBought'],
+          data['username'] ?? '');
+    }).then((value) {
+      int additionalTimeJockerCount = value.additionalTimeJockerCount - 1;
+
+      return userCollection.doc(uid).update({
+        'additionalTimeJockerCount': additionalTimeJockerCount,
+      });
+    });
+  }
+
+  Future updateDoubleScoreJoker() async {
+    await userCollection.doc(uid).get().then((value) {
+      Map<String, dynamic> data = value.data()! as Map<String, dynamic>;
+
+      return TuneHopUser(
+          data['uid'] ?? '',
+          data['guessTheSoundScore'],
+          data['quizScore'],
+          data['halfAndHalfJockerCount'],
+          data['doubleValueJockerCount'],
+          data['additionalTimeJockerCount'],
+          data['diamonds'],
+          data['correctAnswersGuessTheSound'],
+          data['correctAnswersQuiz'],
+          data['gamesPlayed'],
+          data['jokersBought'],
+          data['username'] ?? '');
+    }).then((value) {
+      int doubleValueJockerCount = value.doubleValueJockerCount - 1;
+
+      return userCollection.doc(uid).update({
+        'doubleValueJockerCount': doubleValueJockerCount,
+      });
+    });
+  }
+
 }

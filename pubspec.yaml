@@ -78,6 +78,9 @@ flutter:
     - assets/images/quiz.jpg
     - assets/images/guess_the_sound.jpg
     - assets/images/header_tiger.png
+    - assets/images/header_piggy.png
+    - assets/images/header_monkey.png
+    - assets/images/header_elephant.png
     - assets/images/logo.png
     - assets/images/slide1.png
     - assets/images/slide2.png
